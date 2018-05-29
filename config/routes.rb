@@ -3,5 +3,6 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :revisions
+    resources :images
   end
 end
