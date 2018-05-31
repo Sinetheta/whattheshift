@@ -3,12 +3,12 @@ module Api
     before_action :set_revision, only: [:show]
 
     def show
-      json_response(@revision, :ok, include: :images)
+      render(@revision)
     end
 
     def create
       @revision = Revision.create!(revision_params)
-      json_response(@revision, :created, include: :images)
+      render(@revision, status: :created)
     end
 
     private

@@ -3,12 +3,12 @@ module Api
     before_action :set_image, only: [:show, :update]
 
     def show
-      json_response(@image)
+      render(@image)
     end
 
     def update
       @image.update(image_params)
-      json_response(@image)
+      render(@image)
     end
 
     private
