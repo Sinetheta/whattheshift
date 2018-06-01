@@ -19,7 +19,7 @@ module Api
     end
 
     def set_image
-      @image = Image.find(params[:id])
+      @image = Image.find_by(signature: params[:id])
     end
   end
 end
