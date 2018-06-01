@@ -1,6 +1,6 @@
 GIT
-  remote: https://github.com/jhawthorn/visdiff-ruby.git
-  revision: 722e85f35e418caef869380443fa4dde6cb593a7
+  remote: https://github.com/sinetheta/visdiff-ruby.git
+  revision: 5a9d46af4fecfbc3a18721f36f043a057dd9aac0
   branch: master
   specs:
     visdiff (0.0.7)

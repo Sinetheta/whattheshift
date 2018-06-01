@@ -54,7 +54,7 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
   gem 'rspec-rails', '~> 3.7'
-  gem 'visdiff', github: 'jhawthorn/visdiff-ruby', branch: 'master'
+  gem 'visdiff', github: 'sinetheta/visdiff-ruby', branch: 'master'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
