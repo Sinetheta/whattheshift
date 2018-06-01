@@ -1,0 +1,30 @@
+<p>
+  <strong>ID:</strong>
+  <%= @revision.id %>
+</p>
+
+<p>
+  <strong>Identifier:</strong>
+  <%= @revision.identifier %>
+</p>
+
+<h2>Images</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Identifier</th>
+    <th>Signature</th>
+    <th>Description</th>
+    <th>Image</th>
+  </tr>
+
+  <% @revision.images.each do |image| %>
+    <tr>
+      <td><%= image.id %></td>
+      <td><%= image.identifier %></td>
+      <td><%= image.signature %></td>
+      <td><%= image.description %></td>
+      <td><%= image_tag(image.image) if image.image.attached? %></td>
+    </tr>
+  <% end %>
+</table>

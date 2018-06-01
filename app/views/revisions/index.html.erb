@@ -1,0 +1,19 @@
+<h1>Listing revisions</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Identifier</th>
+    <th>Images</th>
+    <th></th>
+  </tr>
+
+  <% @revisions.each do |revision| %>
+    <tr>
+      <td><%= revision.id %></td>
+      <td><%= revision.identifier %></td>
+      <td><%= revision.images.count %></td>
+      <td><%= link_to 'Show', revision_path(revision) %></td>
+    </tr>
+  <% end %>
+</table>
