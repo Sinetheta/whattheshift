@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>ID</th>
+    <th>Description</th>
     <th>Identifier</th>
     <th>Images</th>
     <th></th>
@@ -11,6 +12,7 @@
   <% @revisions.each do |revision| %>
     <tr>
       <td><%= revision.id %></td>
+      <td><%= revision.description %></td>
       <td><%= revision.identifier %></td>
       <td><%= revision.images.count %></td>
       <td><%= link_to 'Show', revision_path(revision) %></td>
