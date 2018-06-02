@@ -17,7 +17,7 @@ module Api
       params.require(:revision)
             .permit :description,
                     :identifier,
-                    images_attributes: [:description, :identifier, :signature]
+                    images_attributes: [:identifier, :signature]
     end
 
     def set_revision

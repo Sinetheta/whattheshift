@@ -15,7 +15,7 @@ module Api
 
     def image_params
       params.require(:image)
-            .permit [:description, :identifier, :image, :signature]
+            .permit [:identifier, :image, :signature]
     end
 
     def set_image
