@@ -1,5 +1,5 @@
 class Image < ApplicationRecord
-  belongs_to :revision
+  has_and_belongs_to_many :revisions
 
   has_one_attached :image
 end

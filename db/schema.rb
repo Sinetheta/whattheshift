@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_02_000249) do
+ActiveRecord::Schema.define(version: 2018_06_06_204139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,10 +39,15 @@ ActiveRecord::Schema.define(version: 2018_06_02_000249) do
   create_table "images", force: :cascade do |t|
     t.string "identifier"
     t.string "signature"
-    t.bigint "revision_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["revision_id"], name: "index_images_on_revision_id"
+  end
+
+  create_table "images_revisions", id: false, force: :cascade do |t|
+    t.bigint "revision_id", null: false
+    t.bigint "image_id", null: false
+    t.index ["image_id"], name: "index_images_revisions_on_image_id"
+    t.index ["revision_id"], name: "index_images_revisions_on_revision_id"
   end
 
   create_table "revisions", force: :cascade do |t|
@@ -52,5 +57,4 @@ ActiveRecord::Schema.define(version: 2018_06_02_000249) do
     t.string "description"
   end
 
-  add_foreign_key "images", "revisions"
 end
