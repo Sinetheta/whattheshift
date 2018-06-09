@@ -1,21 +1,26 @@
 <h1>Listing revisions</h1>
 
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Description</th>
-    <th>Identifier</th>
-    <th>Images</th>
-    <th></th>
-  </tr>
-
-  <% @revisions.each do |revision| %>
+<%= form_for(:comparison, url: comparisons_path) do |f| %>
+  <table>
     <tr>
-      <td><%= revision.id %></td>
-      <td><%= revision.description %></td>
-      <td><%= revision.identifier %></td>
-      <td><%= revision.images.count %></td>
-      <td><%= link_to 'Show', revision_path(revision) %></td>
+      <th>ID</th>
+      <th>Description</th>
+      <th>Identifier</th>
+      <th>Images</th>
+      <th></th>
     </tr>
-  <% end %>
-</table>
+
+    <% @revisions.each do |revision| %>
+      <tr>
+        <td><%= f.check_box :revision_ids, { multiple: true }, revision.id, nil %></td>
+        <td><%= revision.id %></td>
+        <td><%= revision.description %></td>
+        <td><%= revision.identifier %></td>
+        <td><%= revision.images.count %></td>
+        <td><%= link_to 'Show', revision_path(revision) %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= f.button'Compare Selected' %>
+<% end %>
