@@ -6,7 +6,7 @@ module WhatTheShift
     attr_reader :image_compare
 
     # @param image_compare [RevisionCompare]
-    def initialize(image_compare)
+    def initialize(image_compare=ImageCompare.new)
       @image_compare = image_compare
     end
 
