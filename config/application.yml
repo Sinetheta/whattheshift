@@ -1,0 +1,4 @@
+visdiff_base_url: 'http://localhost:3000/api'
+
+production:
+  visdiff_base_url: 'https://whattheshift.herokuapp.com/api'

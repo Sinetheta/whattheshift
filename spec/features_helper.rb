@@ -6,7 +6,7 @@ require 'visdiff/rspec'
 
 RSpec.configure do |config|
   config.visdiff.enable
-  config.visdiff.base_url = 'http://localhost:3000/api'
+  config.visdiff.base_url = Figaro.env.visdiff_base_url
   config.visdiff.api_key = 'not-implemented'
   config.visdiff.revision_from_git!
 end
