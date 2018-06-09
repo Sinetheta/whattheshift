@@ -1,0 +1,21 @@
+<h1>Listing comparisons</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>From</th>
+    <th>To</th>
+    <th>Images</th>
+    <th></th>
+  </tr>
+
+  <% @comparisons.each do |comparison| %>
+    <tr>
+      <td><%= comparison.id %></td>
+      <td><%= link_to "Revision #{comparison.from_revision_id}", revision_path(comparison.from_revision_id) %></td>
+      <td><%= link_to "Revision #{comparison.to_revision_id}", revision_path(comparison.to_revision_id) %></td>
+      <td><%= comparison.image_diffs.count %></td>
+      <td><%= link_to 'Show', comparison_path(comparison) %></td>
+    </tr>
+  <% end %>
+</table>

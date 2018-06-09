@@ -1,0 +1,33 @@
+<p>
+  <strong>ID:</strong>
+  <%= @comparison.id %>
+</p>
+
+<p>
+  <strong>From:</strong>
+  <%= link_to "Revision #{@comparison.from_revision_id}", revision_path(@comparison.from_revision_id) %>
+</p>
+
+<p>
+  <strong>To:</strong>
+  <%= link_to "Revision #{@comparison.to_revision_id}", revision_path(@comparison.to_revision_id) %>
+</p>
+
+<h2>Image Diff</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Before</th>
+    <th>After</th>
+    <th>Diff</th>
+  </tr>
+
+  <% @comparison.image_diffs.each do |image_diff| %>
+    <tr>
+      <td><%= image_diff.id %></td>
+      <td><%= image_tag(image_diff.before_image.image) %></td>
+      <td><%= image_tag(image_diff.after_image.image) %></td>
+      <td><%= image_tag(image_diff.image) %></td>
+    </tr>
+  <% end %>
+</table>
