@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     resources :revisions
     resources :images
   end
+
+  devise_for :users
 end
