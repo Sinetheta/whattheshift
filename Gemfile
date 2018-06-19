@@ -42,6 +42,9 @@ gem 'figaro'
 # ImageMagick wrapper used to diff images
 gem 'mini_magick'
 
+# Email
+gem 'sparkpost_rails'
+
 group :development, :test do
   gem 'pry-rails'
 end
