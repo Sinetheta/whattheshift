@@ -43,6 +43,9 @@ gem 'figaro'
 # ImageMagick wrapper used to diff images
 gem 'mini_magick'
 
+# Error reporting
+gem 'rollbar'
+
 # Email
 gem 'sparkpost_rails'
 
