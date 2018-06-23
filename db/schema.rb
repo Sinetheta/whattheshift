@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_23_204844) do
+ActiveRecord::Schema.define(version: 2018_06_23_211518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,16 @@ ActiveRecord::Schema.define(version: 2018_06_23_204844) do
     t.index ["revision_id"], name: "index_images_revisions_on_revision_id"
   end
 
+  create_table "project_members", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "project_id"
+    t.integer "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_project_members_on_project_id"
+    t.index ["user_id"], name: "index_project_members_on_user_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -117,4 +127,6 @@ ActiveRecord::Schema.define(version: 2018_06_23_204844) do
   add_foreign_key "comparisons", "revisions", column: "to_revision_id"
   add_foreign_key "image_diffs", "images", column: "after_image_id"
   add_foreign_key "image_diffs", "images", column: "before_image_id"
+  add_foreign_key "project_members", "projects"
+  add_foreign_key "project_members", "users"
 end
