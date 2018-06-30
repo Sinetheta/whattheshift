@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_23_220153) do
+ActiveRecord::Schema.define(version: 2018_06_24_210024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,15 @@ ActiveRecord::Schema.define(version: 2018_06_23_220153) do
     t.index ["project_id"], name: "index_scenarios_on_project_id"
   end
 
+  create_table "scripts", force: :cascade do |t|
+    t.string "type"
+    t.text "body"
+    t.bigint "scenario_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["scenario_id"], name: "index_scripts_on_scenario_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -138,4 +147,5 @@ ActiveRecord::Schema.define(version: 2018_06_23_220153) do
   add_foreign_key "project_members", "projects"
   add_foreign_key "project_members", "users"
   add_foreign_key "scenarios", "projects"
+  add_foreign_key "scripts", "scenarios"
 end
