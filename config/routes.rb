@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :comparisons
+  resources :projects
   resources :revisions
 
   namespace :api do

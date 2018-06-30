@@ -1,0 +1,19 @@
+<h1>Projects</h1>
+
+<p>
+  <%= link_to 'Add new project', new_project_path %>
+</p>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+  </tr>
+
+  <% @projects.each do |project| %>
+    <tr>
+      <td><%= link_to project.id, project %></td>
+      <td><%= project.name %></td>
+    </tr>
+  <% end %>
+</table>

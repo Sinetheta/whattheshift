@@ -1,0 +1,15 @@
+<h1>Project <%= @project.id %></h1>
+
+<p>
+  <%= link_to 'Projects', projects_path %> /
+  <%= link_to 'edit', edit_project_path(@project) %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <%= link_to 'Scenarios', [@project, :scenarios] %>
+</p>
