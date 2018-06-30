@@ -1,0 +1,21 @@
+<%= form_for([@project, @scenario]) do |f| %>
+  <p>
+    <%= f.label(:name) %>
+    <%= f.text_field(:name) %>
+  </p>
+
+  <h2>Script</h2>
+  <% # Only NavigationScript type currently supported %>
+  <%= f.fields_for :script do |ff| %>
+    <p>
+      <%= ff.label :type %>
+      <%= ff.select :type, Script.types %>
+    </p>
+    <% script = ff.object %>
+    <%= render partial: "navigation_script_form", locals: { f: ff, script: script } %>
+  <% end %>
+
+  <p>
+    <%= f.submit('Save') %>
+  </p>
+<% end %>

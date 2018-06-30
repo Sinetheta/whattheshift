@@ -1,0 +1,24 @@
+<h1>Project <%= @project.id %> Scenarios</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+
+  <% @project.scenarios.each do |scenario| %>
+    <tr>
+      <td><%= scenario.name %></td>
+      <td>
+        <%= link_to 'Show', project_scenario_path(@project, scenario) %>
+        <%= link_to 'Edit', edit_project_scenario_path(@project, scenario) %>
+        <%= link_to 'Delete', project_scenario_path(@project, scenario), method: :delete %>
+      </td>
+    </tr>
+  <% end %>
+
+  <tr>
+    <td></td>
+    <td><%= link_to 'Add new scenario', new_project_scenario_path(@project) %></td>
+  </tr>
+</table>

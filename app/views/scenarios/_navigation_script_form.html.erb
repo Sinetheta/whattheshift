@@ -1,0 +1,15 @@
+<table>
+  <tr>
+    <th>Description</th>
+    <th>URL</th>
+  </tr>
+
+  <%= f.fields_for :destinations, script.fill_destinations do |ff| %>
+    <tr>
+      <td><%= ff.text_field :description, placeholder: 'About Page' %></td>
+      <td><%= ff.text_field :url, placeholder: 'https://my-site.com/about' %></td>
+    </tr>
+  <% end %>
+</table>
+
+(currently limited to 5 urls per script)

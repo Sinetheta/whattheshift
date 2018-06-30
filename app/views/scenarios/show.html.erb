@@ -1,0 +1,17 @@
+<h1>Project <%= @project.id %> Scenario <%= @scenario.id %></h1>
+
+<p>
+  <%= link_to 'Projects', projects_path %> /
+  <%= link_to @project.id, @project %> /
+  <%= link_to 'Scenarios', [@project, :scenarios] %> /
+  <%= link_to 'edit', edit_project_scenario_path(@project, @scenario) %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @scenario.name %>
+</p>
+
+<h2>Script</h2>
+
+<%= render partial: @scenario.script.partial_name, locals: { script: @scenario.script } %>
