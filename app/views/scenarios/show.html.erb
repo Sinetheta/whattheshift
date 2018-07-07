@@ -15,3 +15,7 @@
 <h2>Script</h2>
 
 <%= render partial: @scenario.script.partial_name, locals: { script: @scenario.script } %>
+
+<h2>Run Now</h2>
+
+<%= render partial: '/revisions/from_scenario_form', locals: { scenario: @scenario } %>

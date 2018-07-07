@@ -1,6 +1,6 @@
 class ScenariosController < ApplicationController
   before_action :load_project
-  before_action :load_scenario, only: [:destroy, :edit, :show, :update]
+  before_action :load_scenario, only: [:destroy, :edit, :run, :show, :update]
 
   def create
     @scenario = @project.scenarios.create(scenario_params)
@@ -27,7 +27,20 @@ class ScenariosController < ApplicationController
     render :show
   end
 
+  def run
+    require 'whattheshift/scripting/revision_from_scenario'
+    runner = WhatTheShift::Scripting::RevisionFromScenario.new(capybara_driver, @scenario)
+    revision = runner.call(run_params)
+    flash[:notice] = "Revision created!"
+    redirect_to revision_path(revision)
+  end
+
   private
+
+  def capybara_driver
+    require 'whattheshift/scripting/capybara_driver'
+    WhatTheShift::Scripting::CapybaraDriver.new
+  end
 
   def load_project
     @project = Project.find(params[:project_id])
@@ -49,5 +62,9 @@ class ScenariosController < ApplicationController
                       ]
                     }
                   ]
+  end
+
+  def run_params
+    params.permit(:description)
   end
 end

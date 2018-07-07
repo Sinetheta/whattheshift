@@ -3,7 +3,11 @@ Rails.application.routes.draw do
 
   resources :comparisons
   resources :projects do
-    resources :scenarios
+    resources :scenarios do
+      member do
+        post 'run'
+      end
+    end
   end
   resources :revisions
 

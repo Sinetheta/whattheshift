@@ -1,0 +1,7 @@
+<%= form_tag(run_project_scenario_path(@project, @scenario)) do %>
+  <p>
+    <%= label_tag(:description) %>
+    <%= text_field_tag(:description, nil, placeholder: 'New brand colours') %>
+    <%= submit_tag('Run') %>
+  </p>
+<% end %>
