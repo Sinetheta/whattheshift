@@ -12,6 +12,7 @@ module WhatTheShift
       # @param navigation_script [NavigationScript] a web script to execute
       # @return [Array<TmpImage>] a list of screenshots
       def call(navigation_script)
+        capybara_driver.resize_to(1366, 768)
         navigation_script.destinations.map do |destination|
           Image.new(
             identifier: destination.description,

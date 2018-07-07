@@ -19,12 +19,16 @@ module WhatTheShift
         Capybara.save_path = 'tmp/capybara'
       end
 
-      def visit_url(url)
-        visit(url)
+      def resize_to(width, height)
+        current_window.resize_to(width, height)
       end
 
       def save_screenshot(image_name)
         page.save_screenshot(image_name)
+      end
+
+      def visit_url(url)
+        visit(url)
       end
     end
   end
