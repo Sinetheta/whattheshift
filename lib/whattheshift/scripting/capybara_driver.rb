@@ -7,8 +7,15 @@ module WhatTheShift
       include Capybara::DSL
 
       def initialize
+        Capybara.register_driver :chrome_headless do |app|
+          browser_options = ::Selenium::WebDriver::Chrome::Options.new
+          browser_options.args << '--headless'
+          chrome_binary_path = ENV.fetch('GOOGLE_CHROME_SHIM', nil)
+          browser_options.binary = chrome_binary_path if chrome_binary_path
+          Capybara::Selenium::Driver.new(app, browser: :chrome, options: browser_options)
+        end
+        Capybara.current_driver = :chrome_headless
         Capybara.run_server = false
-        Capybara.current_driver = :selenium_chrome_headless
         Capybara.save_path = 'tmp/capybara'
       end
 
