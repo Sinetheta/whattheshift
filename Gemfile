@@ -46,7 +46,7 @@ gem 'figaro'
 # ImageMagick wrapper used to diff images
 gem 'mini_magick'
 
-gem 'omniauth-github'
+gem 'omniauth-github', '~> 1.3'
 
 # Error reporting
 gem 'rollbar'
