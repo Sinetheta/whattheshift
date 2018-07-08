@@ -257,8 +257,8 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   config.omniauth :github,
-                  Rails.application.credentials.oauth[:github][:client_id],
-                  Rails.application.credentials.oauth[:github][:client_secret],
+                  Figaro.env.oauth_github_id || Rails.application.credentials.oauth[:github][:client_id],
+                  Figaro.env.oauth_github_secret || Rails.application.credentials.oauth[:github][:client_secret],
                   scope: 'user'
 
   # ==> Warden configuration
