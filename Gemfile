@@ -48,6 +48,8 @@ gem 'mini_magick'
 
 gem 'omniauth-github', '~> 1.3'
 
+gem 'react-rails'
+
 # Error reporting
 gem 'rollbar'
 
