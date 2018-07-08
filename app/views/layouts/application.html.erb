@@ -13,7 +13,12 @@
   </head>
 
   <body>
-    <%= render 'shared/main_menu' %>
+    <%= react_component('MainMenu', {
+      destroy_user_session_path: destroy_user_session_path,
+      user_github_omniauth_authorize_path: user_github_omniauth_authorize_path,
+      user_signed_in: user_signed_in?
+    }) %>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
