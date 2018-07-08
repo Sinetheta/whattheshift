@@ -30,7 +30,7 @@ class ScenariosController < ApplicationController
   def run
     require 'whattheshift/scripting/revision_from_scenario'
     runner = WhatTheShift::Scripting::RevisionFromScenario.new(capybara_driver, @scenario)
-    revision = runner.call(run_params)
+    revision = runner.call(run_params[:description])
     flash[:notice] = "Revision created!"
     redirect_to revision_path(revision)
   end
