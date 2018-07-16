@@ -1,5 +1,5 @@
 class Revision < ApplicationRecord
-  belongs_to :project
+  belongs_to :scenario
   has_and_belongs_to_many :images
 
   accepts_nested_attributes_for :images

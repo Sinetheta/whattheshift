@@ -4,4 +4,7 @@ class Comparison < ApplicationRecord
 
   has_many :comparison_image_diffs
   has_many :image_diffs, through: :comparison_image_diffs
+  has_one :scenario, through: :from_revision
+
+  delegate :project, to: :scenario
 end

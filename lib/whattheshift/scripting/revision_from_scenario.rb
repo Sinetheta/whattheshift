@@ -41,7 +41,7 @@ module WhatTheShift
           identifier: identifier,
           description: description,
           images_attributes: images_attributes(images),
-          project: scenario.project
+          scenario: scenario
         }
       end
 
