@@ -1,5 +1,3 @@
 json.merge! revision.attributes
 
-json.images revision.images do |image|
-  json.partial! '/api/images/image', image: image
-end
+json.images revision.images, partial: 'api/images/image', as: :image
