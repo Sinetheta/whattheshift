@@ -58,6 +58,7 @@ class ScenariosController < ApplicationController
                     {
                       destinations_attributes: [
                         :description,
+                        :is_full_height,
                         :url
                       ]
                     }

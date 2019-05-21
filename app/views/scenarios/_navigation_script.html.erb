@@ -1,5 +1,9 @@
 <ul>
   <% script.destinations.each do |destination| %>
-    <li><%= destination.description %> <%= destination.url %></li>
+    <li>
+      <%= destination.description %>
+      <%= destination.url %>
+      <%= '(full-height)' if destination.full_height? %>
+    </li>
   <% end %>
 </ul>

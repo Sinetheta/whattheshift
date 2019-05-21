@@ -20,9 +20,14 @@ class NavigationScript < Script
   class Destination
     include ActiveModel::Model
 
-    attr_accessor :description, :url
+    attr_accessor :description, :is_full_height, :url
 
     validates :description, presence: true
+    validates :is_full_height, inclusion: ['true', 'false']
     validates :url, presence: true, url: true
+
+    def full_height?
+      is_full_height == 'true'
+    end
   end
 end

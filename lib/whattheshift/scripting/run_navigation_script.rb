@@ -16,7 +16,7 @@ module WhatTheShift
         navigation_script.destinations.map do |destination|
           Image.new(
             identifier: destination.description,
-            fullpath: screenshot(destination.url)
+            fullpath: screenshot(destination.url, destination.full_height?)
           )
         end
       end
@@ -28,9 +28,9 @@ module WhatTheShift
         "screenshot-#{SecureRandom.urlsafe_base64}.png"
       end
 
-      def screenshot(url)
+      def screenshot(url, is_full_height)
         capybara_driver.visit url
-        capybara_driver.save_screenshot(random_filename)
+        capybara_driver.save_screenshot(random_filename, is_full_height: is_full_height)
       end
     end
   end

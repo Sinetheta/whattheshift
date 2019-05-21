@@ -8,6 +8,7 @@
     <tr>
       <td><%= ff.text_field :description, placeholder: 'About Page' %></td>
       <td><%= ff.text_field :url, placeholder: 'https://my-site.com/about' %></td>
+      <td><%= ff.check_box :is_full_height, {}, 'true', 'false' %></td>
     </tr>
   <% end %>
 </table>
