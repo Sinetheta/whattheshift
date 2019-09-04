@@ -1,0 +1,86 @@
+{
+  "addons": [
+    "heroku-postgresql",
+    "rollbar",
+    "sparkpost"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-google-chrome.git"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-chromedriver.git"
+    }
+  ],
+  "env": {
+    "DEFAULT_URL_HOST": {
+      "required": true
+    },
+    "LANG": {
+      "required": true
+    },
+    "OAUTH_GITHUB_ID": {
+      "required": true
+    },
+    "OAUTH_GITHUB_SECRET": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "RAILS_ENV": {
+      "required": true
+    },
+    "RAILS_LOG_TO_STDOUT": {
+      "required": true
+    },
+    "RAILS_MASTER_KEY": {
+      "required": true
+    },
+    "RAILS_SERVE_STATIC_FILES": {
+      "required": true
+    },
+    "ROLLBAR_ACCESS_TOKEN": {
+      "required": true
+    },
+    "ROLLBAR_ENDPOINT": {
+      "required": true
+    },
+    "SECRET_KEY_BASE": {
+      "required": true
+    },
+    "SPARKPOST_API_KEY": {
+      "required": true
+    },
+    "SPARKPOST_API_URL": {
+      "required": true
+    },
+    "SPARKPOST_SANDBOX_DOMAIN": {
+      "required": true
+    },
+    "SPARKPOST_SMTP_HOST": {
+      "required": true
+    },
+    "SPARKPOST_SMTP_PASSWORD": {
+      "required": true
+    },
+    "SPARKPOST_SMTP_PORT": {
+      "required": true
+    },
+    "SPARKPOST_SMTP_USERNAME": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "name": "whattheshift",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
