@@ -1,0 +1,9 @@
+<ul>
+  <% project_tokens.each do |project_token| %>
+    <li>
+      <input value="<%= project_token.id %>" read-only="true">
+      Created At: <%= project_token.created_at %>
+    </li>
+  <% end %>
+</ul>
+
