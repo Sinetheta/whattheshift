@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       end
     end
   end
+  resources :project_tokens, only: [:create]
   resources :revisions
 
   namespace :api do

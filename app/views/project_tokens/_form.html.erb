@@ -1,0 +1,7 @@
+<%= form_for(project.project_tokens.new) do |f| %>
+  <%= f.hidden_field :project_id %>
+
+  <p>
+    <%= f.submit('Generate API Key') %>
+  </p>
+<% end %>
