@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_17_002636) do
+ActiveRecord::Schema.define(version: 2020_10_17_210058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -89,6 +89,13 @@ ActiveRecord::Schema.define(version: 2020_10_17_002636) do
     t.index ["user_id"], name: "index_project_members_on_user_id"
   end
 
+  create_table "project_tokens", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_project_tokens_on_project_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -150,6 +157,7 @@ ActiveRecord::Schema.define(version: 2020_10_17_002636) do
   add_foreign_key "image_diffs", "images", column: "before_image_id"
   add_foreign_key "project_members", "projects"
   add_foreign_key "project_members", "users"
+  add_foreign_key "project_tokens", "projects"
   add_foreign_key "revisions", "scenarios"
   add_foreign_key "scenarios", "projects"
   add_foreign_key "scripts", "scenarios"
