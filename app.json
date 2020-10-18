@@ -67,5 +67,12 @@
       "url": "https://github.com/heroku/heroku-buildpack-chromedriver.git"
     }
   ],
-  "stack": "heroku-18"
+  "stack": "heroku-18",
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "bundle exec rspec"
+      }
+    }
+  }
 } 
