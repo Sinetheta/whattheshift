@@ -1,19 +1,8 @@
 {
-  "addons": [
-    "heroku-postgresql",
-    "rollbar"
-  ],
-  "buildpacks": [
-    {
-      "url": "heroku/ruby"
-    },
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-google-chrome.git"
-    },
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-chromedriver.git"
-    }
-  ],
+  "name": "WhatTheShift",
+  "description": "Visual diff for web projects",
+  "website": "https://whattheshift.online",
+  "repository": "https://github.com/Sinetheta/whattheshift",
   "env": {
     "DEFAULT_URL_HOST": {
       "required": true
@@ -54,11 +43,29 @@
   },
   "formation": {
     "web": {
-      "quantity": 1
+      "quantity": 1,
+      "size": "standard-1x"
     }
   },
-  "name": "whattheshift",
-  "scripts": {
-  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql:hobby-dev",
+      "options": {
+        "version": "10"
+      }
+    },
+    "rollbar"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-google-chrome.git"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-chromedriver.git"
+    }
+  ],
   "stack": "heroku-18"
-}
+} 
