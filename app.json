@@ -102,6 +102,7 @@
         "WD_CHROME_PATH": "/app/.apt/usr/bin/google-chrome-stable"
       },
       "scripts": {
+        "test-setup": "bin/rails assets:precompile",
         "test": "bundle exec rspec"
       }
     }
