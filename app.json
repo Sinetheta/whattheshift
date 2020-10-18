@@ -70,6 +70,9 @@
   "stack": "heroku-18",
   "environments": {
     "test": {
+      "addons": [
+        "heroku-postgresql:in-dyno"
+      ],
       "env": {
         "OAUTH_GITHUB_ID": {
           "required": false
