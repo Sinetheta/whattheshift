@@ -53,9 +53,6 @@ gem 'react-rails'
 # Error reporting
 gem 'rollbar'
 
-# Email
-gem 'sparkpost_rails'
-
 group :development, :test do
   gem 'pry-rails'
 end

@@ -66,7 +66,6 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "whattheshift_#{Rails.env}"
 
   config.action_mailer.default_url_options = { host: Figaro.env.default_url_host }
-  config.action_mailer.delivery_method = :sparkpost
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
