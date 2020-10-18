@@ -73,6 +73,17 @@
       "addons": [
         "heroku-postgresql:in-dyno"
       ],
+      "buildpacks": [
+        {
+          "url": "heroku/ruby"
+        },
+        {
+          "url": "https://github.com/heroku/heroku-buildpack-google-chrome.git"
+        },
+        {
+          "url": "https://github.com/heroku/heroku-buildpack-chromedriver.git"
+        }
+      ],
       "env": {
         "OAUTH_GITHUB_ID": {
           "required": false
@@ -87,7 +98,8 @@
         },
         "ROLLBAR_ENDPOINT": {
           "required": false
-        }
+        },
+        "WD_CHROME_PATH": "/app/.apt/usr/bin/google-chrome-stable"
       },
       "scripts": {
         "test": "bundle exec rspec"
