@@ -70,6 +70,22 @@
   "stack": "heroku-18",
   "environments": {
     "test": {
+      "env": {
+        "OAUTH_GITHUB_ID": {
+          "required": false
+        },
+        "OAUTH_GITHUB_SECRET": {
+          "required": false
+        },
+        "RACK_ENV": "test",
+        "RAILS_ENV": "test",
+        "ROLLBAR_ACCESS_TOKEN": {
+          "required": false
+        },
+        "ROLLBAR_ENDPOINT": {
+          "required": false
+        }
+      },
       "scripts": {
         "test": "bundle exec rspec"
       }
