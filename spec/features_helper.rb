@@ -9,6 +9,7 @@ RSpec.configure do |config|
   config.visdiff.base_url = Figaro.env.visdiff_base_url
   config.visdiff.api_key = Figaro.env.visdiff_api_key
   if ENV['CI']
+    config.visdiff.base_url = 'https://whattheshift.herokuapp.com/api'
     config.visdiff.identifier = ENV['HEROKU_TEST_RUN_ID']
     config.visdiff.description = "Heroku test of #{ENV['HEROKU_TEST_RUN_BRANCH']} at #{ENV['HEROKU_TEST_RUN_COMMIT_VERSION']}"
   else
