@@ -12,9 +12,11 @@
   <%= @scenario.name %>
 </p>
 
-<h2>Script</h2>
+<% if @scenario.script %>
+  <h2>Script</h2>
 
-<%= render partial: @scenario.script.partial_name, locals: { script: @scenario.script } %>
+  <%= render partial: @scenario.script.partial_name, locals: { script: @scenario.script } %>
+<% end %>
 
 <h2>Run Now</h2>
 
