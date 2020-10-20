@@ -101,6 +101,11 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.7.1)
     execjs (2.7.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.13.1)
@@ -314,6 +319,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   capybara
   devise
+  factory_bot_rails
   figaro
   jbuilder (~> 2.5)
   letter_opener
