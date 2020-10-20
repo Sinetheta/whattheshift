@@ -38,6 +38,7 @@ gem 'aws-sdk-s3', require: false
 gem 'capybara'
 gem 'webdrivers'
 gem 'devise'
+gem 'pundit', '~> 2.1'
 gem 'selenium-webdriver'
 
 # ENV management
