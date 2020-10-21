@@ -6,4 +6,8 @@ class ProjectPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def update?
+    ProjectMember.where(project: record, user: user, role: [:admin, :member]).any?
+  end
 end
