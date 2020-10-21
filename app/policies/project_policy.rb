@@ -1,5 +1,9 @@
 class ProjectPolicy < ApplicationPolicy
+  def index?
+    true
+  end
+
   def show?
-    ProjectMember.where(project: record, user: user, role: [:admin, :member]).any?
+    true
   end
 end
