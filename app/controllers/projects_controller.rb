@@ -2,7 +2,9 @@ class ProjectsController < ApplicationController
   before_action :load_project, only: [:edit, :show, :update]
 
   def create
-    @project = Project.create(project_params)
+    @project = Project.new(project_params)
+    @project.members.new(user: current_user, role: :admin)
+    @project.save!
     authorize @project
     render :show
   end
