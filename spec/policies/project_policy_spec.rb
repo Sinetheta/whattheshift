@@ -4,11 +4,33 @@ RSpec.describe ProjectPolicy, type: :policy do
   let(:user) { create(:user) }
   let(:record) { create(:project) }
   let(:project_policy) { described_class.new(user, record) }
+
+  describe '#create?' do
+    subject { project_policy.create? }
+
+    it { is_expected.to be(true) }
+  end
   
   describe '#index?' do
     subject { project_policy.index? }
 
     it { is_expected.to be(true) }
+  end
+
+  describe '#new?' do
+    subject { project_policy.new? }
+
+    context 'with logged in user' do
+      let(:user) { create(:user) }
+
+      it { is_expected.to be(true) }
+    end
+
+    context 'without logged in user' do
+      let(:user) { nil }
+
+      it { expect{ subject }.to raise_error(Pundit::NotAuthorizedError) }
+    end
   end
 
   describe '#show?' do

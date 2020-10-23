@@ -46,4 +46,11 @@ class ApplicationPolicy
       scope.all
     end
   end
+
+  private
+
+  def ensure_login!
+    raise Pundit::NotAuthorizedError, "must be logged in" unless user
+    true
+  end
 end

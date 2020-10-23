@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.create(project_params)
+    authorize @project
     render :show
   end
 
@@ -12,6 +13,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    authorize @project
   end
 
   def update
