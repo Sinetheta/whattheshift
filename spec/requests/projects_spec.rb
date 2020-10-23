@@ -52,4 +52,34 @@ RSpec.describe "Projects", type: :request do
       end
     end
   end
+
+  describe "update project" do
+    let(:user) { create(:user) }
+    let(:project) { create(:project) }
+    let(:project_params) { { project: { name: 'Updated Project' }  } }
+
+    subject { put project_path(project), params: project_params }
+
+    before { sign_in user }
+
+    context 'without a membership for that user to that project' do
+      it 'fails' do
+        expect{ subject }.to raise_error(Pundit::NotAuthorizedError)
+      end
+    end
+
+    context 'with a membership for that user to that project' do
+      before { create(:project_member, role: :member, user: user, project: project) }
+
+      it 'succeeds' do
+        subject
+        expect(response).to have_http_status(200)
+      end
+
+      it 'displays the updated project details' do
+        subject
+        expect(response.body).to include('Updated Project')
+      end
+    end
+  end
 end

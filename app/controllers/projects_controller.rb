@@ -17,6 +17,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    authorize @project
     @project.update(project_params)
     render :show
   end
