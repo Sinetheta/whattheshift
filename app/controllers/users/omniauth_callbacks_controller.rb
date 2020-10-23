@@ -1,4 +1,6 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  skip_after_action :verify_authorized
+
   def github
     user = User.from_omniauth(request.env['omniauth.auth'])
     user.link_account_from_omniauth(request.env['omniauth.auth'])
