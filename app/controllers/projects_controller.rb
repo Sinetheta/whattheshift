@@ -19,7 +19,6 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    authorize @project
     @project.update(project_params)
     render :show
   end
@@ -28,6 +27,7 @@ class ProjectsController < ApplicationController
 
   def load_project
     @project = Project.find(params[:id])
+    authorize @project
   end
 
   def project_params

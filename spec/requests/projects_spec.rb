@@ -53,6 +53,35 @@ RSpec.describe "Projects", type: :request do
     end
   end
 
+  describe "edit project" do
+    let(:user) { create(:user) }
+    let(:project) { create(:project) }
+
+    subject { get edit_project_path(project) }
+
+    before { sign_in user }
+
+    context 'without a membership for that user to that project' do
+      it 'fails' do
+        expect{ subject }.to raise_error(Pundit::NotAuthorizedError)
+      end
+    end
+
+    context 'with a membership for that user to that project' do
+      before { create(:project_member, role: :member, user: user, project: project) }
+
+      it 'succeeds' do
+        subject
+        expect(response).to have_http_status(200)
+      end
+
+      it 'displays the project form' do
+        subject
+        expect(response.body).to include("Edit Project #{project.id}")
+      end
+    end
+  end
+
   describe "update project" do
     let(:user) { create(:user) }
     let(:project) { create(:project) }
@@ -80,6 +109,22 @@ RSpec.describe "Projects", type: :request do
         subject
         expect(response.body).to include('Updated Project')
       end
+    end
+  end
+
+  describe "show project" do
+    let(:project) { create(:project, name: 'This Project') }
+
+    subject { get project_path(project) }
+
+    it 'succeeds' do
+      subject
+      expect(response).to have_http_status(200)
+    end
+
+    it 'displays the project details' do
+      subject
+      expect(response.body).to include('This Project')
     end
   end
 end
