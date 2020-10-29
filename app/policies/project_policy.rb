@@ -1,4 +1,8 @@
 class ProjectPolicy < ApplicationPolicy
+  def admin_tokens?
+    contributor?
+  end
+
   def create?
     ensure_login!
   end

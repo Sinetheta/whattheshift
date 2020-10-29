@@ -27,6 +27,12 @@ RSpec.describe ProjectPolicy, type: :policy do
     end
   end
 
+  describe '#admin_tokens?' do
+    subject { project_policy.admin_tokens? }
+    
+    it_behaves_like 'an action available only to contributors'
+  end
+
   describe '#create?' do
     subject { project_policy.create? }
 

@@ -10,9 +10,7 @@
   <%= @project.name %>
 </p>
 
-<h2>Api Keys</h2>
-<%= render partial: '/project_tokens/list', locals: { project_tokens: @project.project_tokens } %>
-<%= render partial: '/project_tokens/form', locals: { project: @project } %>
+<%= render partial: '/projects/admin_tokens', locals: { project: @project } %>
 
 <p>
   <%= link_to 'Scenarios', [@project, :scenarios] %>
