@@ -12,6 +12,12 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def update?
+    contributor?
+  end
+
+  private
+
+  def contributor?
     ProjectMember.where(project: record, user: user, role: [:admin, :member]).any?
   end
 end
