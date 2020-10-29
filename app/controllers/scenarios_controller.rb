@@ -4,6 +4,7 @@ class ScenariosController < ApplicationController
 
   def create
     @scenario = @project.scenarios.create(scenario_params)
+    authorize @scenario
     render :show
   end
 
@@ -14,12 +15,13 @@ class ScenariosController < ApplicationController
   end
 
   def index
-    @scenarios = @project.scenarios
+    @scenarios = policy_scope(Scenario)
   end
 
   def new
     @scenario = @project.scenarios.new
     @scenario.script = NavigationScript.new
+    authorize @scenario
   end
 
   def update
@@ -28,6 +30,7 @@ class ScenariosController < ApplicationController
   end
 
   def run
+    authorize @scenario
     require 'whattheshift/scripting/revision_from_scenario'
     runner = WhatTheShift::Scripting::RevisionFromScenario.new(capybara_driver, @scenario)
     revision = runner.call(run_params[:description])
@@ -48,6 +51,7 @@ class ScenariosController < ApplicationController
 
   def load_scenario
     @scenario = Scenario.includes(:script).find(params[:id])
+    authorize @scenario
   end
 
   def scenario_params

@@ -1,6 +1,7 @@
 class ProjectTokensController < ApplicationController
   def create
     token = ProjectToken.create(project_token_params)
+    authorize token
     redirect_to token.project
   end
 

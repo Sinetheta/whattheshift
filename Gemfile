@@ -38,6 +38,7 @@ gem 'aws-sdk-s3', require: false
 gem 'capybara'
 gem 'webdrivers'
 gem 'devise'
+gem 'pundit', '~> 2.1'
 gem 'selenium-webdriver'
 
 # ENV management
@@ -69,6 +70,7 @@ group :development do
 end
 
 group :test do
+  gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 3.7'
   gem 'visdiff', github: 'sinetheta/visdiff-ruby', branch: 'master'
 end
