@@ -6,11 +6,12 @@ class ComparisonsController < ApplicationController
   end
 
   def index
-    @comparisons = Comparison.includes(:image_diffs).all
+    @comparisons = policy_scope(Comparison).includes(:image_diffs).all
   end
 
   def show
     @comparison = Comparison.includes(:image_diffs).find(params[:id])
+    authorize @comparison
   end
 
   private
