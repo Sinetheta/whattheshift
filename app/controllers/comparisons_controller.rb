@@ -1,7 +1,10 @@
 class ComparisonsController < ApplicationController
   def create
     require 'whattheshift/revision_compare'
-    @comparison = WhatTheShift::RevisionCompare.new.call(*revisions)
+    Comparison.transaction do
+      @comparison = WhatTheShift::RevisionCompare.new.call(*revisions)
+      authorize @comparison
+    end
     render :show
   end
 
