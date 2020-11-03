@@ -24,9 +24,10 @@ module WhatTheShift
     private
 
     def diff_images(start_images, finish_images)
-      start_images.map do |before_image|
+      start_images.reduce([]) do |diffs, before_image|
         after_image = finish_images.find_by(identifier: before_image.identifier)
-        create_diff(before_image, after_image)
+        diffs << create_diff(before_image, after_image) if after_image
+        diffs
       end
     end
 
