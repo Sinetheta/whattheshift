@@ -67,7 +67,7 @@
       "url": "https://github.com/heroku/heroku-buildpack-chromedriver.git"
     }
   ],
-  "stack": "heroku-18",
+  "stack": "heroku-22",
   "environments": {
     "test": {
       "addons": [
@@ -107,4 +107,4 @@
       }
     }
   }
-} 
+}
